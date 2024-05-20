@@ -14,4 +14,12 @@ export default class Player {
         this.image = new Image();
         this.image.src = "./src\assets\images\player.png";
     }
+
+    move() {
+        if(this.rightPressed) {
+            this.x += this.velocity;
+        } else if(this.leftPressed) {
+            this.x += -this.velocity;
+        }
+    }
 }
