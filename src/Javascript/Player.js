@@ -22,4 +22,13 @@ export default class Player {
             this.x += -this.velocity;
         }
     }
+
+    collideWithWalls() {
+        if(this.x < 0) {
+            this.x = 0;
+        }
+        if(this.x > this.canvas.withis - this.width) {
+            this.x = this.canvas.withis - this.width;
+        }
+    }
 }
