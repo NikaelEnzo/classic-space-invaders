@@ -30,5 +30,29 @@ export default class Player {
         if(this.x > this.canvas.withis - this.width) {
             this.x = this.canvas.withis - this.width;
         }
+
+        keydow = (event) => {
+            if(event.code == "ArrowRight") {
+                this.rightPressed = true;
+            }
+            else if(event.code == "ArrowLeft") {
+                this.leftPressed = true;
+            }
+            else if(event.code == "Space") {
+                this.shootPressed = true;
+            }
+        }
+
+        keyup = (event) => {
+            if(event.code == "ArrowRight") {
+                this.rightPressed = false;
+            }
+            else if(event.code == "ArrowLeft") {
+                this.leftPressed = false;
+            }
+            else if(event.code == "Space") {
+                this.shootPressed = false;
+            }
+        }
     }
 }
