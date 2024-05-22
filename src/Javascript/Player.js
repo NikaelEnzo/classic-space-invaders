@@ -13,6 +13,17 @@ export default class Player {
         this.height = 48;
         this.image = new Image();
         this.image.src = "./src\assets\images\player.png";
+
+        document.addEventListener("keydown", this.keydown);
+        document.addEventListener("keyup", this.keyup);
+    }
+    draw(ctx) {
+        if (this.shootPressed) {
+            this.bulletController.shoot(this.x + this.width / 2, this.y, 4, 10);
+        }
+        this.move();
+        this.collideWithWalls();
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
     move() {
@@ -31,7 +42,7 @@ export default class Player {
             this.x = this.canvas.withis - this.width;
         }
 
-        keydow = (event) => {
+        keydown = (event) => {
             if(event.code == "ArrowRight") {
                 this.rightPressed = true;
             }
