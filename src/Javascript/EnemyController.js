@@ -17,8 +17,8 @@ export default class EnemyController {
     dafaultYVelocity = 1;
     moveDownTimerDefault =30;
     moveDownTimer = this.moveDownTimerDefault;
-    fireBulletTimerDegault = 100;
-    fireBullet = this.fireBulletTimerDegault;
+    fireBulletTimerDefault = 100;
+    fireBulletTimer = this.fireBulletTimerDefault;
 
     constructor(canvas, enemyBulletController, playerBulletController) {
         this.canvas = canvas;
@@ -41,5 +41,16 @@ export default class EnemyController {
             });
         });
         this.enemyRows = this.enemyRows.filter((enemyRow) => enemyRow.length > 0)
+    }
+
+    fireBullet() {
+        this.fireBulletTimer--;
+        if(this.fireBullet <= 0) {
+            this.fireBulletTimer = this.fireBulletTimerDefault;
+            const allEnemies = this.enemyRows.flat();
+            const enemyIndex = Math.floor(Math.random() * allEnemies.length);
+            const enemy = allEnemies[enemyIndex];
+            this.enemyBulletController.shoot(enemy.x + enemy.width / 2, enemy.y, -3);
+        }
     }
 }
