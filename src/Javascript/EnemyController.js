@@ -10,7 +10,7 @@ export default class EnemyController {
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2,],
     ];
     enemyRows = [];
-    crurrentDirection = MovingDirection.right;
+    currentDirection = MovingDirection.right;
     xVelocity = 0;
     yVelocity = 0;
     dafaultXVelocity = 1;
@@ -57,6 +57,15 @@ export default class EnemyController {
     resetMoveDownTimer() {
     if(this.moveDownTimer <= 0) {
         this.moveDownTimer = this.moveDownTimerDefault;
+        }
+    }
+
+    decremetMoveDownTimer() {
+        if(
+            this.currentDirection === MovingDirection.downLeft ||
+            this.currentDirection === MovingDirection.downright
+        ) {
+            this.moveDownTimer--;
         }
     }
 }
