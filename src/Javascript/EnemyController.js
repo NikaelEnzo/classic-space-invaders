@@ -1,5 +1,6 @@
 import Enemy from './Enemy';
 import MovingDirection from './MovingDirection';
+
 export default class EnemyController {
     enemyMap = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,],
@@ -9,12 +10,13 @@ export default class EnemyController {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,],
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2,],
     ];
+    
     enemyRows = [];
     currentDirection = MovingDirection.right;
     xVelocity = 0;
     yVelocity = 0;
-    dafaultXVelocity = 1;
-    dafaultYVelocity = 1;
+    defaultXVelocity = 1;
+    defaultYVelocity = 1;
     moveDownTimerDefault = 30;
     moveDownTimer = this.moveDownTimerDefault;
     fireBulletTimerDefault = 100;
@@ -36,7 +38,7 @@ export default class EnemyController {
                 if(this.playerBulletController.collideWith(enemy)) {
                     this.enemyDeathSound.currentTime = 0;
                     this.enemyDeathSound.play();
-                    enemyRow.splcie(enemyIndex, 1)
+                    enemyRow.splice(enemyIndex, 1)
                 }
             });
         });
@@ -99,7 +101,38 @@ export default class EnemyController {
             })
         })
     }
+
     collideWith(sprite) {
         return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
+    }
+
+    updateVelocityAndDirection() {
+        for(const enemyRow of this.enemyRows) {
+            if(this.currentDirection === MovingDirection.right) {
+                this.xVelocity = this.deafultXVelocity;
+                this.yVelocity = 0;
+                const rightMostEnemy = enemyRow[enemyRow.length - 1];
+                if(rightMostEnemy.x + rightMostEnemy.width >= this.canvas.width) {
+                    this.currentDirection = MovingDirection.downLeft;
+                    break;
+                }
+            } else if(this.currentDirection === MovingDirection.downLeft) {
+                if(this.moveDown(MovingDirection.left)) {
+                    break;
+                }
+            } else if(this.currentDirection === MovingDirection.left) {
+                this.xVelocity = -this.defaultXVelocity;
+                this.yVelocity = 0;
+                const leftMostEnemy = enemyRow[0];
+                if(leftMostEnemy.x <= 0) {
+                    this.currentDirection = MovingDirection.downRight;
+                    break;
+                }
+            } else if(this.currentDirection === MovingDirection.downRight) {
+                if(this.moveDown(MovingDirection.right)) {
+                    break;
+                }
+            }
+        }
     }
 }
