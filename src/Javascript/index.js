@@ -10,3 +10,12 @@ canvas.height = 600;
 
 const background = new image();
 background.src = "./src/assets/images/space.png"
+
+const playerBulletController = new BulletController(canvas, 10, "twite", true);
+const enemyBulletController = new BulletController(canvas, 4, "red", false);
+
+const EnemyController = new EnemyController(
+    canvas, 
+    enemyBulletController,
+    playerBulletController
+);
