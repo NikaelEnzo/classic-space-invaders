@@ -19,3 +19,28 @@ const enemyController = new EnemyController(
     enemyBulletController,
     playerBulletController
 );
+
+const player = new Player(canvas, 3, playerBulletController)
+
+let isGameOver = false;
+let didWin = false;
+
+function checkGameOver() {
+    if(isGameOver) {
+        return;
+    }
+
+    if(enemyBulletController.collideWith(player)) {
+        isGameOver = true;
+    }
+
+    if(enemyController.collideWith(player)) {
+        isGameOver = true;
+    }
+
+    if(enemyController.enemyRows.length === 0) {
+        didWin = true;
+        isGameOver = true;
+    }
+    
+}
