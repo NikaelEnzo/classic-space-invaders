@@ -41,6 +41,15 @@ function checkGameOver() {
     if(enemyController.enemyRows.length === 0) {
         didWin = true;
         isGameOver = true;
+    }   
+}
+
+function displayGameOver() {
+    if(isGameOver) {
+        let text = didWin ? " Você Ganhou" : "Gamer Over";
+        let textOFFset = didWin ? 5 : 3.6;
+        ctx.fillStyle = "white" ;
+        ctx.font = "35px 'Press Start 2P'";
+        ctx.fillText(text, canvas.width / textOFFset, canvas.height / 2);
     }
-    
 }
