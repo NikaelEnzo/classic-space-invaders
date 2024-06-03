@@ -1,7 +1,7 @@
-const MoningDirention = {
+const MovingDirection = {
     left: 0,
     right: 1,
     downLeft: 2,
-    downright: 3,
-};
-export default MoningDirention;
+    downRight: 3,
+  };
+export default MovingDirection;
