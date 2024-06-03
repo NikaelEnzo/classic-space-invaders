@@ -1,18 +1,18 @@
-import EnemyController from "./EnemyController";
-import BulletController from "./BulletController";
-import Player from "./Player";
+import EnemyController from "./EnemyController.js";
+import BulletController from "./BulletController.js";
+import Player from "./Player.js";
 
-const canvas = document.createElement('game');
+const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d'); // 2d context
 
 canvas.width = 600;
 canvas.height = 600;
 
-const background = new image();
-background.src = "./src/assets/images/space.png"
+const background = new Image();
+background.src = "./src/assets/images/space.png";
 
-const playerBulletController = new BulletController(canvas, 10, "twite", true);
-const enemyBulletController = new BulletController(canvas, 4, "red", false);
+const playerBulletController = new BulletController(canvas, 10, "white", true);
+const enemyBulletController = new BulletController(canvas, 4, "red", true);
 
 const enemyController = new EnemyController(
     canvas, 
@@ -20,7 +20,7 @@ const enemyController = new EnemyController(
     playerBulletController
 );
 
-const player = new Player(canvas, 3, playerBulletController)
+const player = new Player(canvas, 3, playerBulletController);
 
 let isGameOver = false;
 let didWin = false;
@@ -59,11 +59,11 @@ function checkGameOver() {
 
 function displayGameOver() {
     if(isGameOver) {
-        let text = didWin ? " Você Ganhou" : "Gamer Over";
-        let textOFFset = didWin ? 5 : 3.6;
+        let text = didWin ? "Você Ganhou" : "Gamer Over";
+        let textOffset = didWin ? 5 : 3.6;
         ctx.fillStyle = "white" ;
         ctx.font = "35px 'Press Start 2P'";
-        ctx.fillText(text, canvas.width / textOFFset, canvas.height / 2);
+        ctx.fillText(text, canvas.width / textOffset, canvas.height / 2);
     }
 }
 

@@ -26,7 +26,7 @@ export default class EnemyController {
         this.canvas = canvas;
         this.enemyBulletController = enemyBulletController;
         this.playerBulletController = playerBulletController;
-        this.enemyDeathSound = new Audio("src\assets\sounds\enemy-death.wav")
+        this.enemyDeathSound = new Audio("./src/assets/sounds/enemy-death.wav")
         this.enemyDeathSound.volume = 0.1;
 
         this.createEnemies();
@@ -56,7 +56,7 @@ export default class EnemyController {
 
     fireBullet() {
         this.fireBulletTimer--;
-        if(this.fireBullet <= 0) {
+        if(this.fireBulletTimer <= 0) {
             this.fireBulletTimer = this.fireBulletTimerDefault;
             const allEnemies = this.enemyRows.flat();
             const enemyIndex = Math.floor(Math.random() * allEnemies.length);
