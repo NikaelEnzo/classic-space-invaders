@@ -24,12 +24,10 @@ const player = new Player(canvas, 10, playerBulletController);
 
 let isGameOver = false;
 let didWin = false;
-
 function game() {
   checkGameOver();
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   displayGameOver();
-
   if(!isGameOver) {
     enemyController.draw(ctx);
     player.draw(ctx);
@@ -60,7 +58,6 @@ function checkGameOver() {
   if(enemyController.collideWith(player)) {
     isGameOver = true;
   }
-
   if(enemyController.enemyRows.length === 0) {
     didWin = true;
     isGameOver = true;

@@ -1,44 +1,42 @@
 <!DOCTYPE html>  <!-- serve para o navegador endentificar o modelo do arquivo -->
 <html lang="pt-br"> <!-- serve para delemitir o arquivo, tudo precisa estar aqui dentro | o lang é a linguagem -->
 <head>
-    <meta charset="UTF-8"> <!-- serve para disponibilisar caracteres especiais tipo `´~^ç -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!--| content = serve pra funcionar em aparelhos moveis |-->
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-        rel="stylesheet"
-    />
-    <title>Classic Space Invaders | Nikael</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="src/assets/images/player.png" type="image/x-icon">
+    <title>Classic Space Invaders | Nikael Enzo</title>
     <style>
-        canvas {
-            box-shadow: rgba(255, 255, 255, 0.226) 20px 20px 40px;
-        }
-        h1 {
-            margin: 30px 0 30px 0;
-            font-size: 2.4em;
-            font-family: "Press Start 2P", system-ui;
-            color: black;
-            text-shadow: -0.02em 0 azure, 0 0.02em azure, 0.02em 0 azure, 0 -0.02em azure;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0px; 
-            margin: 0px;
-            height: 100vh;
-            background: linear-gradient(
-                0deg,
-                rgba(19, 20, 44, 0.788) 0%,
-                rgb(0, 0, 0) 100%
-            );
-        }
-    </style> <!--| padding faz o espaçamento de dentro | vh é como % da tela, se 100vh é 100% da tela |-->
-</head>
-<body>
+      canvas{
+        box-shadow: black 20px 10px 50px;
+      }
+      h1{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 2.5em;
+        font-family: "Press Start 2P";
+        color: white;
+      }
+      body{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0px;
+        margin: 0px;
+        height: 100vh;
+        background: linear-gradient(
+          0deg,
+          rgba(12, 12, 12, 0.804) 0%,
+          rgb(0, 0, 0) 100%
+        );
+      }
+    </style>
+  </head>
+  <body>
     <h1>Space Invaders</h1>
-    <canvas id="game"></canvas> <!-- canva vai renderisar tudo oque nos vamos fazer em java script -->
-    <script type="module" src="src/javascript/index.js"> </script>
-</body>
-</html>
+    <canvas id="game"></canvas>
+    <script type="module" src="src/javascript/index.js"></script>
+  </body>
+  </html>
